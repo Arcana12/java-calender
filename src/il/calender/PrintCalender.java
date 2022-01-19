@@ -11,12 +11,15 @@ public class PrintCalender {
         while(true) {
             System.out.println("연도를 입력해주세요");
             int year = scanner.nextInt();
+
+            if (year == -1) {
+                break;
+            }
+
             System.out.println("달을 입력해주세요");
             int month = scanner.nextInt();
 
-            if (month == -1) {
-                break;
-            }
+
             if (month>12){
                 System.out.println("다시 입력해주세요");
                 continue;
