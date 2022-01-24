@@ -1,10 +1,30 @@
 package il.calender;
 
+import java.sql.Date;
 import java.util.*;
 
 public class Calender {
+
+    private HashMap <Date, String> planMap;
+
+    public Calender(){
+        planMap = new HashMap<Date, String>();
+    }
+
     public static final int [] MAX_DAYS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     public static final int [] LEAP_MAX_DAYS = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    public void calPlan(String strDate, String plan){
+        java.sql.Date date = java.sql.Date.valueOf(strDate);
+        System.out.println(date);
+        planMap.put(date, plan);
+    }
+
+    public String searchPlan(String strDate){
+        java.sql.Date date = java.sql.Date.valueOf(strDate);
+        String plan = planMap.get(date);
+        return plan;
+    }
 
     //leap year
     public boolean isLeapYear(int year){
@@ -40,6 +60,8 @@ public class Calender {
         return days % 7;
     }
 
+
+
     public void printCalender(int year, int month){
 
         System.out.printf("   <<%4d년%3d월>>    \n",year, month);
@@ -66,4 +88,10 @@ public class Calender {
         }
         System.out.println("\n");
     }
+
+    /*public static void main(String[] args) {
+        Calender cal = new Calender();
+        cal.calPlan("2022-01-22", "백신맞는날");
+        System.out.println(cal.searchPlan("2022-01-22"));
+    }*/
 }
